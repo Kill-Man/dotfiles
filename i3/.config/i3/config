@@ -52,7 +52,7 @@ bindsym $mod+Shift+semicolon kill
 # bindcode $mod+40 exec rofi -modi drun,run -show drun
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
-bindsym $mod+e exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+e exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -nf '#93A1A1' -nb '#002B36' -sb '#4C7899' -sf '#FEF6E3' -fn 'Source Code Pro-10'"
 
 # change focus
 bindsym $mod+h focus left
@@ -180,13 +180,24 @@ bindsym $mod+p mode "resize"
 bar {
 status_command i3status
 font pango:Source Code Pro 8
+colors {
+background #002B36
+statusline #93A1A1
+separator  #FEF6E3
+
+focused_workspace  #002B36 #4C7899 #FEF6E3
+active_workspace   #002B36 #002B36 #93A1A1
+inactive_workspace #002B36 #002B36 #657B83
+urgent_workspace   #002B36 #DC322F #FEF6E3
+binding_mode       #002B36 #DC322F #FEF6E3
+}
 }
 
 # My Changes
 font pango:Source Code Pro 8
 
 # gaps
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 5
 gaps inner 20
 
 # start with single terminal
@@ -195,3 +206,13 @@ exec i3-sensible-terminal
 # start windows in correct workspaces
 assign [class="firefox"] $ws10
 assign [class="discord"] $ws9
+
+## Colors created with https://thomashunter.name/i3-configurator/
+# class                 border  bground text    indicator child_border
+client.focused          #4C7899 #4C7899 #4C7899 #4C7899   #4C7899
+client.focused_inactive #93A1A1 #93A1A1 #93A1A1 #93A1A1   #93A1A1
+client.unfocused        #002B36 #002B36 #002B36 #002B36   #002B36
+client.urgent           #DC322F #DC322F #DC322F #DC322F   #DC322F
+client.placeholder      #657B83 #657B83 #657B83 #657B83   #657B83
+
+client.background       #FFFFFF
