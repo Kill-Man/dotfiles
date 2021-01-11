@@ -21,15 +21,14 @@ if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
 	exec startx
 fi
 
-## Aliases
-alias ls='ls --color=auto -F'
-alias ll='ls -l'
-
 ## Prompts
-# user@machine dir
 PROMPT='
 %F{1}%n%f@%F{4}%m%f %F{6}%B%~%b%f
 %F{2}%#%f '
-
-# error code if there was one
 RPROMPT='%(?..[%?])'
+
+## Aliases
+
+if [ -e $HOME/.zsh_alias ]; then
+	. $HOME/.zsh_alias
+fi
