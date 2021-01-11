@@ -38,3 +38,6 @@ If for some reason a file isn't showing up, that's likely because it is
 included in Stow's default ignore. To counteract this, simply create an empty
 file called `.stow-local-ignore` in the directory that represents `$HOME`
 which, again, would be `emacs` in our example.
+
+Adding files to an already existing set of configs works the exact same,
+without the creating new directory part.
