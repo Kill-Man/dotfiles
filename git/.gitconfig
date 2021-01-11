@@ -2,4 +2,6 @@
 	email = Kill-Man@users.noreply.github.com
 	name = Kill Man
 [core]
-	excludesfile = /home/austin/.gitignore
+	excludesfile = ~/.gitignore
+[credential]
+	helper = store
