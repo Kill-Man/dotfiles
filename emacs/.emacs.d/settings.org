@@ -335,6 +335,17 @@ buffer. If no window has an eshell buffer, create one across the bottom."
    #+END_SRC
 
 * Misc
+** Backups
+
+   Move backup files to =~/.emacs.d/.backups= and change some settings to make
+   backups generally better.
+
+   #+BEGIN_SRC emacs-lisp
+(setq backup-directory-alist '(("." . "~/.emacs.d/.backups"))
+      version-control t
+      delete-old-versions t)
+   #+END_SRC
+
 ** Theme
 
    Use =solarized-dark= theme. In org mode, use monospace, non-scaled headlines.
