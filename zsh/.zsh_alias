@@ -12,3 +12,7 @@ alias rm='rm -I --preserve-root'
 alias grep='grep -n --color=auto'
 alias egrep='egrep -n --color=auto'
 alias fgrep='fgrep -n --color=auto'
+
+# dotfile
+alias dotfile='stow -v -t ~ -d ~/dotfiles'
+alias dotfile-test='dotfile -n'
