@@ -37,3 +37,8 @@ RPROMPT='%(?..[%?])'
 if [ -e $HOME/.zsh_alias ]; then
 	. $HOME/.zsh_alias
 fi
+
+## Functions
+if [ -e $HOME/.zsh_func ]; then
+	. $HOME/.zsh_func
+fi
