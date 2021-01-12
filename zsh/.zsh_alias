@@ -14,5 +14,5 @@ alias egrep='egrep -n --color=auto'
 alias fgrep='fgrep -n --color=auto'
 
 # dotfile
-alias dotfile='stow -v -t ~ -d ~/dotfiles'
+alias dotfile="stow -v -t $HOME -d $HOME/dotfiles"
 alias dotfile-test='dotfile -n'
