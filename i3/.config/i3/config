@@ -201,7 +201,7 @@ for_window [class=".*"] border pixel 5
 gaps inner 20
 
 # start with single terminal
-exec i3-sensible-terminal
+exec i3-sensible-terminal -e sh -c 'neofetch; zsh'
 
 # start windows in correct workspaces
 assign [class="firefox"] $ws10
