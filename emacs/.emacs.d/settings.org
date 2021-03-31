@@ -154,12 +154,18 @@
 *** Code Cleanup on Save
 
     Reformat a file before saving by reindenting the buffer and removing
-    trailing whitespace.
+    trailing whitespace. This is rebound instead of it being a hook because if
+    it's a hook, /any/ saved file becomes formatted, even ones which are
+    generated and probably shouldn't be formatted according to Emacs.
 
     #+BEGIN_SRC emacs-lisp
-(add-hook 'before-save-hook (lambda ()
-                              (indent-region (point-min) (point-max) nil)
-                              (delete-trailing-whitespace)))
+(defun cleanup-and-save ()
+  "Indents the buffer, removes trailing whitespace, and saves the it."
+  (interactive)
+  (indent-region (point-min) (point-max) nil)
+  (delete-trailing-whitespace)
+  (save-buffer))
+(add-hook 'c-mode (lambda () (local-set-key (kbd "C-x C-s") #'cleanup-and-save)))
     #+END_SRC
 
 *** =highlight-escape-sequences=
@@ -180,16 +186,6 @@
 
     #+BEGIN_SRC emacs-lisp
 (set-frame-font "Source Code Pro-10" nil t)
-    #+END_SRC
-
-*** Tabs
-
-    Tabs should be 4 characters wide. They should also be disabled on a
-    mode-by-mode basis. See [[* Modes][Modes]] for mode-specific changes to these values.
-
-    #+BEGIN_SRC emacs-lisp
-(setq-default tab-width 4)
-(defvaralias 'standard-indent 'tab-width)
     #+END_SRC
 
 * Modes
@@ -213,35 +209,15 @@
   (smart-tabs-insinuate 'c 'c++))
      #+END_SRC
 
-**** Indentation Size
-
-     Use 2 visual spaces instead of 4 for indentation for the listed modes.
-
-     #+BEGIN_SRC emacs-lisp
-(add-hook 'sh-mode-hook (lambda () (setq tab-width 2)))
-     #+END_SRC
-
 ** C
 
-   Set indentation style to K&R.
+   Set indentation style to Linux.
 
    #+BEGIN_SRC emacs-lisp
-(setq-default c-indentation-style "k&r")
-   #+END_SRC
-
-
-   Set the C offset to be the same as =tab-width=.
-
-   #+BEGIN_SRC emacs-lisp
-(defvaralias 'c-basic-offset 'tab-width)
-   #+END_SRC
-
-** Shell
-
-   Set indentation to be the same as tab-width.
-
-   #+BEGIN_SRC emacs-lisp
-(defvaralias 'sh-basic-offset 'tab-width)
+(setq c-default-style '((java-mode . "java")
+                        (awk-mode . "awk")
+                        (python-mode . "python")
+                        (other . "linux")))
    #+END_SRC
 
 ** Org
@@ -265,6 +241,14 @@
 
    #+BEGIN_SRC emacs-lisp
 (add-hook 'org-mode-hook #'auto-fill-mode)
+   #+END_SRC
+
+
+   When exporting org to HTML, use =htmlize= to enable syntax highlighting of
+   code blocks.
+
+   #+BEGIN_SRC emacs-lisp
+(use-package htmlize)
    #+END_SRC
 
 * Windows
