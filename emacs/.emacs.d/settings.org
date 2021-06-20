@@ -217,7 +217,7 @@
 (setq c-default-style '((java-mode . "java")
                         (awk-mode . "awk")
                         (python-mode . "python")
-                        (other . "linux")))
+                        (other . "k&r")))
    #+END_SRC
 
 ** Org
