@@ -17,7 +17,6 @@ compinit
 ## Preconfigs
 # startx on login
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-	command -v neofetch &> /dev/null && neofetch
 	exec startx
 fi
 

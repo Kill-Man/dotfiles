@@ -12,6 +12,7 @@ alias rm='rm -I --preserve-root'
 alias grep='grep -n --color=auto'
 alias egrep='egrep -n --color=auto'
 alias fgrep='fgrep -n --color=auto'
+alias todo='grep -e TODO -e FIXME'
 
 # dotfile
 alias dotfile="stow -v -t $HOME -d $HOME/dotfiles"

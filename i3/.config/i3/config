@@ -200,12 +200,16 @@ font pango:Source Code Pro 8
 for_window [class=".*"] border pixel 5
 gaps inner 20
 
-# start with single terminal
-exec i3-sensible-terminal -e sh -c 'neofetch; zsh'
-
 # start windows in correct workspaces
 assign [class="firefox"] $ws10
 assign [class="discord"] $ws9
+for_window [class="Spotify"] move container to workspace $ws8
+
+# start with single terminal, firefox, discord, and spotify
+exec i3-sensible-terminal -e sh -c 'neofetch; zsh'
+exec firefox
+exec discord
+exec spotify
 
 ## Colors created with https://thomashunter.name/i3-configurator/
 # class                 border  bground text    indicator child_border
