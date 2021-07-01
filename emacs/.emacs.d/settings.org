@@ -88,17 +88,6 @@
    #+END_SRC
 
 
-   Cause =whitespace-mode= to highlight characters past column 80 and enable it
-   for all programming modes.
-
-   #+BEGIN_SRC emacs-lisp
-(require 'whitespace)
-(defvaralias 'whitespace-line-column 'fill-column)
-(setq whitespace-style '(face lines-tail))
-(add-hook 'prog-mode-hook #'whitespace-mode)
-   #+END_SRC
-
-
    Highlight line of cursor.
 
    #+BEGIN_SRC emacs-lisp
@@ -199,6 +188,14 @@
 (add-hook 'emacs-lisp-mode-hook (lambda () (setq indent-tabs-mode nil)))
      #+END_SRC
 
+**** Tabs are 4 Spaces
+
+     Make tabs display as 4 spaces wide instead of 8
+
+     #+BEGIN_SRC emacs-lisp
+(setq-default tab-width 4)
+     #+END_SRC
+     
 **** Using Smart Tabs
 
      Enable smart tabs in the listed modes.
@@ -211,13 +208,15 @@
 
 ** C
 
-   Set indentation style to Linux.
+   Set indentation style to K&R with the exception of 4 space offset.
 
    #+BEGIN_SRC emacs-lisp
 (setq c-default-style '((java-mode . "java")
                         (awk-mode . "awk")
                         (python-mode . "python")
                         (other . "k&r")))
+
+(setq c-basic-offset 4)
    #+END_SRC
 
 ** Org
